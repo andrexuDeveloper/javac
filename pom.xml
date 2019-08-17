@@ -2,16 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>sc.fiji</groupId>
-		<artifactId>pom-fiji</artifactId>
-		<version>6.1.3</version>
-		<relativePath />
-	</parent>
+	<!--<parent>-->
+		<!--<groupId>sc.fiji</groupId>-->
+		<!--<artifactId>pom-fiji</artifactId>-->
+		<!--<version>6.1.3</version>-->
+		<!--<relativePath />-->
+	<!--</parent>-->
 
 	<artifactId>javac</artifactId>
 	<version>1.6.0.24-ubuntu-fiji3-SNAPSHOT</version>
-
+	<groupId>com.bank</groupId>
 	<name>jars/javac.jar</name>
 	<description />
 
@@ -32,7 +32,22 @@
 
 	<properties>
 		<main-class>com.sun.tools.javac.Main</main-class>
+		<encoding>utf-8</encoding>
+		<compile.optimize>true</compile.optimize>
+		<jdk.version>1.6</jdk.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
 	</properties>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
 	<repositories>
 		<!-- NB: for project parent -->
@@ -44,6 +59,20 @@
 
 	<build>
 		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<!--<encoding>${project.build.sourceEncoding}</encoding>-->
+					<!--<optimize>${compile.optimize}</optimize>-->
+				</configuration>
+			</plugin>
+
+
 			<plugin>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
